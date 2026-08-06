@@ -3,11 +3,11 @@ pipeline {
 
     environment {
         AWS_REGION       = 'ap-south-1'                                  // change to your region
-        AWS_ACCOUNT_ID   = '705822375785'                                // change to your AWS account ID
-        ECR_REPO_NAME    = 'flask-cicd-app'
-        ECR_REPO_URI     = "${"705822375785.dkr.ecr.ap-south-1.amazonaws.com/flask-app-repo"}"
+        AWS_ACCOUNT_ID   = '123456789'                                // change to your AWS account ID
+        ECR_REPO_NAME    = 'flask-cicd-app'				// change to your repo name
+        ECR_REPO_URI     = "${"{AWS_ACCOUNT_ID}.dkr.ecr.ap-south-1.amazonaws.com/flask-app-repo"}"
         IMAGE_TAG        = "${BUILD_NUMBER}"                             // unique tag per build
-        DEPLOY_EC2_IP    = '65.2.83.18'                                     // change to your deploy EC2 public IP
+        DEPLOY_EC2_IP    = '{YOUR_HOST_IP}'                                     // change to your deploy EC2 public IP
         DEPLOY_SSH_CREDS = 'ec2-ssh-key'                                 // Jenkins credentials ID for SSH key
         CONTAINER_NAME   = 'flask-app'
     }
