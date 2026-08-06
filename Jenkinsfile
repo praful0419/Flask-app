@@ -50,7 +50,7 @@ pipeline {
             steps {
                 sshagent(credentials: ["${DEPLOY_SSH_CREDS}"]) {
                     sh """
-                        ssh -o StrictHostKeyChecking=no ec2-user@${DEPLOY_EC2_IP} '
+                        ssh -o StrictHostKeyChecking=no ubuntu@${DEPLOY_EC2_IP} '
                             aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin ${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_REGION}.amazonaws.com &&
                             docker pull ${ECR_REPO_URI}:latest &&
                             docker stop ${CONTAINER_NAME} || true &&
